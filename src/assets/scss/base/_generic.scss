@@ -99,6 +99,7 @@ a {
   &:focus,
   &:active {
     color: $typographic-link-s-font-color;
+    text-decoration: underline;
   }
 
 }

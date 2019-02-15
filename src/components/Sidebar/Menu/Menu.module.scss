@@ -23,12 +23,16 @@
         &:hover,
         &:focus {
           color: $color-primary;
-          border-bottom: 1px solid $color-primary;
+          text-decoration: underline;
         }
 
         &--active {
           color: $color-base;
-          border-bottom: 1px solid $color-base;
+          font-weight: bold;
+
+          &::before {
+            content: '> '
+          }
         }
 
       }

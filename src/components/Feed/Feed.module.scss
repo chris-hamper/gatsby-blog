@@ -41,14 +41,13 @@
 
       &-category {
         &-link {
-          font-size: $typographic-small-font-size;
-          color: $color-secondary;
+          color: $color-primary;
           font-weight: 600;
           text-transform: uppercase;
 
           &:hover,
           &:focus {
-            color: $color-primary;
+            color: $color-secondary;
           }
 
         }
@@ -58,15 +57,9 @@
     }
 
     &-readmore {
-      font-size: $typographic-base-font-size;
-      color: $color-primary;
-
-      &:hover,
-      &:focus {
-        color: $color-primary;
-        border-bottom: 1px solid $color-primary;
+      &::before {
+        content: '> '
       }
-
     }
 
   }

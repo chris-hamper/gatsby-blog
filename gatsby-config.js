@@ -184,7 +184,7 @@ module.exports = {
         short_name: siteConfig.title,
         start_url: '/',
         background_color: '#FFF',
-        theme_color: '#106020',
+        theme_color: '#F7A046',
         display: 'standalone',
         icon: 'static/photo.jpg'
       },
@@ -201,10 +201,8 @@ module.exports = {
         }
       }
     },
-<<<<<<< HEAD
     'gatsby-plugin-flow',
     'gatsby-plugin-optimize-svgs',
-=======
     {
       resolve: 'gatsby-plugin-google-fonts',
       options: {
@@ -214,6 +212,5 @@ module.exports = {
         ]
       }
     },
->>>>>>> 3907a49... Add gatsby-plugin-google-fonts package
   ]
 };
