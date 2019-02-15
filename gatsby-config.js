@@ -173,6 +173,15 @@ module.exports = {
           camelCase: false,
         }
       }
-    }
+    },
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Rajdhani',
+          'Nunito:300,700'
+        ]
+      }
+    },
   ]
 };
