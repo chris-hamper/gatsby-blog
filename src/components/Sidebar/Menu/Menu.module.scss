@@ -14,8 +14,9 @@
       margin: 10px 0;
 
       &-link {
-        font-size: $typographic-base-font-size;
         color: $typographic-base-font-color;
+        font-family: $typographic-heading-font-family;
+        font-size: $typographic-base-font-size * 1.2;
         font-weight: normal;
         border: 0;
 
