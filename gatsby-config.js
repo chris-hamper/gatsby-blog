@@ -201,7 +201,19 @@ module.exports = {
         }
       }
     },
+<<<<<<< HEAD
     'gatsby-plugin-flow',
     'gatsby-plugin-optimize-svgs',
+=======
+    {
+      resolve: 'gatsby-plugin-google-fonts',
+      options: {
+        fonts: [
+          'Rajdhani',
+          'Nunito:300,700'
+        ]
+      }
+    },
+>>>>>>> 3907a49... Add gatsby-plugin-google-fonts package
   ]
 };
