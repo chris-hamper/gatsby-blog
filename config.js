@@ -32,12 +32,13 @@ module.exports = {
     photo: '/photo.jpg',
     bio: 'Miscellaneous Wanderings of a Computer Nerd.',
     contacts: {
-      email: '#',
-      telegram: '#',
-      twitter: '#',
-      github: '#',
-      rss: '#',
-      vkontakte: '#'
+      // email: '#',
+      // telegram: '#',
+      github: 'chris-hamper',
+      twitter: 'hampercm',
+      linkedin: 'chrishamper',
+      // rss: '#',
+      // vkontakte: '#'
     }
   }
 };
