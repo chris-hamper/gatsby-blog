@@ -10,6 +10,7 @@ export const PureSidebar = ({ data, isIndex }) => {
   const {
     author,
     copyright,
+    license,
     menu
   } = data.site.siteMetadata;
 
@@ -19,7 +20,7 @@ export const PureSidebar = ({ data, isIndex }) => {
         <Author author={author} isIndex={isIndex} />
         <Menu menu={menu} />
         <Contacts contacts={author.contacts} />
-        <Copyright copyright={copyright} />
+        <Copyright copyright={copyright} license={license} />
       </div>
     </div>
   );
@@ -34,6 +35,11 @@ export const Sidebar = (props) => (
             title
             subtitle
             copyright
+            license {
+              name
+              url
+              badgeUrl
+            }
             menu {
               label
               path
