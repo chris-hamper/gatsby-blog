@@ -3,3 +3,34 @@
 @import "variables";
 @import "mixins";
 @import "base";
+
+// Syntax highlighting tweaks. See https://www.gatsbyjs.org/packages/gatsby-remark-prismjs/
+.line-numbers .line-numbers-rows {
+  margin: 1em 0 0 1.8em;
+}
+
+.command-line-prompt {
+  width: auto !important;
+  border-right: none;
+}
+
+.command-line-prompt > span:before {
+  color: #999;
+  content: " ";
+  display: block;
+  padding-right: 0;
+}
+
+/* Prompt for all users */
+.command-line-prompt > span[data-user]:before {
+  content: "[" attr(data-user) /*"@" attr(data-host)*/ "]$ ";
+}
+
+/* Prompt for root */
+.command-line-prompt > span[data-user="root"]:before {
+  content: "[" attr(data-user) /*"@" attr(data-host)*/ "]# ";
+}
+
+.command-line-prompt > span[data-prompt]:before {
+  content: attr(data-prompt);
+}
