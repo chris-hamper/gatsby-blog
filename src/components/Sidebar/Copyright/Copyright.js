@@ -3,7 +3,7 @@ import styles from './Copyright.module.scss';
 
 const Copyright = ({ copyright, license }) => (
   <div className={styles['copyright']}>
-    {copyright}<br/>
+    {copyright} {new Date().getFullYear()}<br/>
     {license.name}
     <a href={license.url}>
       <img src={license.badgeUrl} alt={license.name}/>

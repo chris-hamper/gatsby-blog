@@ -6,7 +6,7 @@ module.exports = {
   subtitle: 'Miscellaneous Wanderings of a Computer Nerd.',
   copyright: '© Chris Hamper',
   license: {
-    name: 'CC BY-SA 4.0 License',
+    name: 'Licensed under CC BY-SA 4.0',
     url: 'https://creativecommons.org/licenses/by-sa/4.0/',
     badgeUrl: 'https://licensebuttons.net/l/by-sa/4.0/88x31.png',
   },

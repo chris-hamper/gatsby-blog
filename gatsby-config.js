@@ -180,7 +180,8 @@ module.exports = {
       options: {
         fonts: [
           'Rajdhani',
-          'Nunito:300,700'
+          'Nunito:300,700',
+          'Noto+Serif+JP:300',
         ]
       }
     },
