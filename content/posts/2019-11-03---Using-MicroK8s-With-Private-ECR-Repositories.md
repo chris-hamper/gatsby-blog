@@ -73,7 +73,23 @@ If you **don't** see this, great! You're all set. If you do have it set, blank o
 You'll then need to log back in to get your credentials refreshed and stored as plaintext
 in `~/.docker/config.json`:
 
-```bash{outputLines: 2-3}
+```bash{outputLines: 3-11,13-18}
 docker login
 
+Login with your Docker ID to push and pull images from Docker Hub. If you don't have a Docker ID, head over to https://hub.docker.com to create one.
+Username: <your-username>
+Password: 
+WARNING! Your password will be stored unencrypted in /home/chris/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
+
+$(aws ecr get-login --region us-east-1 --no-include-email)
+WARNING! Using --password via the CLI is insecure. Use --password-stdin.
+WARNING! Your password will be stored unencrypted in /home/chris/.docker/config.json.
+Configure a credential helper to remove this warning. See
+https://docs.docker.com/engine/reference/commandline/login/#credentials-store
+
+Login Succeeded
 ```
