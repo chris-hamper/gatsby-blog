@@ -1,14 +1,14 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://www.chrishamper.com',
   pathPrefix: '/',
   title: 'ChrisHamper.com',
-  subtitle: 'Miscellaneous Wanderings of a Computer Nerd.',
+  subtitle: 'Miscellaneous Ponderings of a Computer Nerd',
   copyright: '© Chris Hamper',
   disqusShortname: '',
   postsPerPage: 4,
-  googleAnalyticsId: '',
+  googleAnalyticsId: 'UA-63433831-2',
   useKatex: false,
   menu: [
     {
@@ -19,15 +19,11 @@ module.exports = {
       label: 'About me',
       path: '/pages/about'
     },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
   ],
   author: {
     name: 'Chris Hamper',
     photo: '/photo.jpg',
-    bio: 'Miscellaneous Wanderings of a Computer Nerd.',
+    bio: 'Miscellaneous Ponderings of a Computer Nerd',
     contacts: {
       email: '',
       facebook: '',
