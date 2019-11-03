@@ -1,9 +1,9 @@
 'use strict';
 
 module.exports = {
-  url: 'https://lumen.netlify.com',
+  url: 'https://chrishamper.com',
   title: 'ChrisHamper.com',
-  subtitle: 'Miscellaneous Wanderings of a Computer Nerd.',
+  subtitle: 'Miscellaneous Ponderings of a Computer Nerd',
   copyright: '© Chris Hamper',
   license: {
     name: 'Licensed under CC BY-SA 4.0',
@@ -12,7 +12,7 @@ module.exports = {
   },
   disqusShortname: '',
   postsPerPage: 4,
-  googleAnalyticsId: '',
+  googleAnalyticsId: 'UA-63433831-2',
   menu: [
     {
       label: 'Articles',
@@ -22,22 +22,18 @@ module.exports = {
       label: 'About me',
       path: '/pages/about'
     },
-    {
-      label: 'Contact me',
-      path: '/pages/contacts'
-    }
   ],
   author: {
     name: 'Chris Hamper',
     photo: '/photo.jpg',
-    bio: 'Miscellaneous Wanderings of a Computer Nerd.',
+    bio: 'Miscellaneous Ponderings of a Computer Nerd',
     contacts: {
       // email: '#',
       // telegram: '#',
       github: 'chris-hamper',
       twitter: 'hampercm',
       linkedin: 'chrishamper',
-      // rss: '#',
+      rss: 'https://chrishamper.com/rss.xml',
       // vkontakte: '#'
     }
   }
