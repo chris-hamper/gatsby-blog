@@ -8,8 +8,9 @@ category: "Kubernetes"
 tags:
   - "Kubernetes"
   - "MicroK8s"
-description: "Configuring a MicroK8s install to (almost) automatically
-connect with a private ECR repository for pulling images."
+description: "Wouldn't it be so convenient if MicroK8s always had pull access to all your
+private Docker image repositories automagically? Well, it's surprisingly simple.
+Here's how to make that happen!"
 ---
 MicroK8s is a great tool for working with Kubernetes on your local environment.
 Being built on Snap, it's easy to set up and manage, and very performant. I've found it to have fewer
@@ -38,8 +39,8 @@ Wouldn't it be so convenient if MicroK8s had access to all your private Docker i
 repositories automagically? Well, it's surprisingly simple. Here's how to
 make that happen!
 
-> **Note:** this article focuses specifically on ECR and Docker Hub, but should apply
-to any other private registry that integrates with `docker login`, including
+> **Note:** while this article focuses on ECR and Docker Hub, it should apply
+to any private registry that integrates with `docker login`, including
 Google Container Registry, Azure Container Registry, and even self-hosted Docker registries.
 
 First off, I'm assuming you've [installed MicroK8s](https://microk8s.io/docs/),
