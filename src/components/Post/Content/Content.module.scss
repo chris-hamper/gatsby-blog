@@ -60,6 +60,20 @@
 
   }
 
+  blockquote {
+    font-style: normal;
+    text-align: justify;
+    border: 1px solid $color-gray-bg;
+    border-left: 10px solid $color-gray-bg;
+    padding: 0.5em 10px;
+
+    & p {
+      max-width: $layout-post-width;
+      font-size: $typographic-base-font-size * 1.25;
+      margin: 0;
+      @include line-height(1.5)
+    }
+  }
 }
 
 @include breakpoint-md {

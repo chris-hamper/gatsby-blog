@@ -12,6 +12,7 @@
 .command-line-prompt {
   width: auto !important;
   border-right: none;
+  font-size: 1.11111em; // Needed to compensate for smaller font-size set in code blocks below
 }
 
 .command-line-prompt > span:before {
@@ -33,4 +34,9 @@
 
 .command-line-prompt > span[data-prompt]:before {
   content: attr(data-prompt);
+}
+
+code[class*="language-"],
+pre[class*="language-"] {
+  font-size: 0.9em;
 }
