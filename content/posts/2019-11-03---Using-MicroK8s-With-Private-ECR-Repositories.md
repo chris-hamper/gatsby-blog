@@ -11,6 +11,7 @@ tags:
 description: "Wouldn't it be so convenient if MicroK8s always had pull access to all your
 private Docker image repositories automagically? Well, it's surprisingly simple.
 Here's how to make that happen!"
+socialImage: "/media/kubernetes-horizontal-color.png"
 ---
 MicroK8s is a great tool for working with Kubernetes on your local environment.
 Being built on Snap, it's easy to set up and manage, and very performant. I've found it to have fewer
