@@ -13,15 +13,15 @@ private Docker image repositories automagically? Well, it's surprisingly simple.
 Here's how to make that happen!"
 socialImage: "/media/kubernetes-horizontal-color.png"
 ---
-MicroK8s is a great tool for working with Kubernetes on your local environment.
+MicroK8s is a great tool for working with Kubernetes on your local Linux environment.
 Being built on Snap, it's easy to set up and manage, and very performant. I've found it to have fewer
 bumps and surprises than other options like [kind](https://kind.sigs.k8s.io/)
-(clusters occasionally just mysteriously stop running!?!) or
+(clusters occasionally just mysteriously stop running?!? 😠 I changed networks and now DNS broke completely?!? 🤬) or
 [Docker on Mac with Kubernetes](https://www.docker.com/blog/docker-mac-kubernetes/)
-(which is pretty nice if you need to use a Mac, but is harder to dig
+(which is *pretty* nice if you need to use a Mac, but is harder to dig
 into the guts of).
 
-One tricky point of using any local Kubernetes setup is getting it to pull your
+One sticky point of using any local Kubernetes setup is getting it to pull your
 private Docker images. If you're using an EKS cluster on AWS, it's pretty easy to get it
 talking with your private Elastic Container Registry (ECR) with just a bit of IAM role tweaking.
 
@@ -44,8 +44,10 @@ make that happen!
 to any private registry that integrates with `docker login`, including
 Google Container Registry, Azure Container Registry, and even self-hosted Docker registries.
 
+## Syncing All Your Docker Creds to MicroK8s
+
 First off, I'm assuming you've [installed MicroK8s](https://microk8s.io/docs/),
-and it's up and running. For now, let's stop Microk8s:
+and it's up and running. For now, let's stop MicroK8s:
 
 ```bash{outputLines: 2-3}
 microk8s.stop
@@ -128,3 +130,59 @@ kubectl get pod hello
 NAME    READY   STATUS    RESTARTS   AGE
 hello   1/1     Running   0          5s
 ```
+
+## Extra Credit: Keep Your ECR Token Fresh
+
+Okay, that's already much better, but what if we want to be really lazy... errr... *efficient* and never need to run `$(aws ecr get-login)` again? Since the ECR token still needs to be refeshed every few hours, let's try cron. 
+
+First we'll create a short shell script at `~/.local/bin/ecr-login.sh`:
+
+```bash
+#!/bin/sh
+$(/usr/local/bin/aws ecr get-login --no-include-email)
+```
+
+Remember to make it executable:
+
+```bash{outputLines: 2}
+chmod +x ~/.local/bin/ecr-login.sh
+```
+
+Next, edit your user crontab:
+
+```bash{outputLines: 2}
+crontab -e
+```
+
+and append a new cron entry to call that script:
+
+```text
+0 */4 * * * /home/[YOUR_USERNAME]/.local/bin/ecr-login.sh 2>&1 >/tmp/ecr-login.log
+```
+
+This will run our login script every four hours at the top of the hour (based on the `0 */4` at the start of the line). Cool, that'll save some typing! But what about when we put our local machine to sleep? Unfortunately cron doesn't run in the interim, so our token will likely expire by the time we wake our computer up in the morning 😞 Are we doomed to refresh our token once every day for the rest of our lives?
+
+Thankfully no. Ubuntu, and most other variants of Linux that use systemd will run commands in response to sleep/wake events, which you can find at `/lib/systemd/system-sleep/`. (Some other Linux distros instead use a framework called [pm-utils](https://pm-utils.freedesktop.org/wiki/) that has a directory for similar scripts, with slight differences.) **Note that you should be cautious working with the commands in this directory, as a mis-written script placed here just might prevent your system from waking!** If that happens, you'll need to perform a hard power cycle to circumnavigate the wake event, or worst case a system recovery to remove the offending script and get your machine working again.
+
+We'll need to tweak our login script a bit, because `systemd` passes in the type of event as parameters, and we only need to trigger on `post` sleep events:
+
+```bash
+#!/bin/sh
+
+case $1 in
+  post)
+    /usr/bin/sudo -iu [YOUR_USERNAME] bash -c '$(aws ecr get-login --no-include-email)' >> /tmp/ecr-login.log
+    ;;
+esac
+```
+
+Move the script into the `system-sleep` directory, changing its ownership to `root`:
+
+```bash{outputLines: 3}
+sudo chown root:root ~/.local/bin/ecr-login.sh
+sudo mv ~/.local/bin/ecr-login.sh /usr/lib/pm-utils/sleep.d/ecr-login.sh
+```
+
+And that should do it! Every time your computer wakes from sleep or hibernation, your ECR token will automatically get refreshed. Now all you need to do is figure out what you'll do with all those extra seconds you're saving.
+
+Enjoy!
