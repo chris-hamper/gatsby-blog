@@ -1,3 +1,9 @@
 [build]
   publish = "public"
   command = "npm run build"
+
+[[redirects]]
+  from = "https://romantic-lamport-88acfe.netlify.com"
+  to = "https://www.chrishamper.com"
+  status = 301
+  force = true
