@@ -258,5 +258,13 @@ module.exports = {
         }
       }
     },
+    {
+      resolve: 'gatsby-plugin-tinacms',
+      options: {
+        plugins: [
+          // We'll add some Tinacms plugins in the next step.
+        ],
+      },
+    },
   ]
 };
