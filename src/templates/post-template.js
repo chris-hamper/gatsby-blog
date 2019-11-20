@@ -5,6 +5,7 @@ import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
+import { remarkForm } from 'gatsby-tinacms-remark';
 
 type Props = {
   data: {
@@ -41,8 +42,9 @@ export const query = graphql`
         title
         socialImage
       }
+      ...TinaRemark
     }
   }
 `;
 
-export default PostTemplate;
+export default remarkForm(PostTemplate);
