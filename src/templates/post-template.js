@@ -47,4 +47,18 @@ export const query = graphql`
   }
 `;
 
-export default remarkForm(PostTemplate);
+let postForm = {
+  fields: [
+    {name: "rawFrontmatter.title", label: "Title", component: "text"},
+    {name: "rawFrontmatter.date", label: "Published Date", component: "date"},
+    {name: "rawFrontmatter.draft", label: "Draft", component: "toggle"},
+    {name: "rawFrontmatter.slug", label: "Slug", component: "text"},
+    {name: "rawFrontmatter.category", label: "Category", component: "text"},
+    {name: "rawFrontmatter.tags", label: "Tags", component: "text"},
+    {name: "rawFrontmatter.description", label: "Synopsis", component: "textarea"},
+    {name: "rawFrontmatter.socialImage", label: "Social Image", component: "text"},
+    {name: "rawMarkdownBody", label: "Body", component: "markdown"},
+  ],
+}
+
+export default remarkForm(PostTemplate, postForm);
