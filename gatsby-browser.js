@@ -8,3 +8,14 @@ require('./static/css/prismjs/theme.min.css');
 require("prismjs/themes/prism-tomorrow.css");
 
 require('./src/assets/scss/tweaks.scss');
+
+import { cms } from 'gatsby-plugin-tinacms'
+import { UrlField } from './src/components/UrlField'
+
+// Register custom TinaCMS field plugins
+export const onClientEntry = () => {
+  cms.fields.add({
+    name: 'url',
+    Component: UrlField,
+  })
+}
