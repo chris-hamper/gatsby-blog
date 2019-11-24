@@ -265,6 +265,10 @@ module.exports = {
           'gatsby-tinacms-git',
           'gatsby-tinacms-remark',
         ],
+        sidebar: {
+          hidden: process.env.NODE_ENV === 'production',
+          position: 'displace',
+        },
       },
     },
   ]
