@@ -136,6 +136,7 @@ module.exports = {
               }
             }
           },
+          `gatsby-remark-emoji`,
           'gatsby-remark-copy-linked-files',
           'gatsby-remark-smartypants',
           'gatsby-remark-external-links'
