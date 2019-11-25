@@ -5,15 +5,17 @@ import Layout from '../components/Layout';
 import Post from '../components/Post';
 import { useSiteMetadata } from '../hooks';
 import type { MarkdownRemark } from '../types';
-import { remarkForm } from 'gatsby-tinacms-remark';
+import { liveRemarkForm } from 'gatsby-tinacms-remark';
 
 type Props = {
   data: {
     markdownRemark: MarkdownRemark
-  }
+  },
+  isEditing: Boolean,
+  setIsEditing: Function,
 };
 
-const PostTemplate = ({ data }: Props) => {
+const PostTemplate = ({ data, isEditing, setIsEditing }: Props) => {
   const { title: siteTitle, subtitle: siteSubtitle } = useSiteMetadata();
   const { frontmatter } = data.markdownRemark;
   const { title: postTitle, description: postDescription, socialImage } = frontmatter;
@@ -21,6 +23,7 @@ const PostTemplate = ({ data }: Props) => {
 
   return (
     <Layout title={`${postTitle} - ${siteTitle}`} description={metaDescription} socialImage={socialImage} >
+      <button onClick={() => setIsEditing(p => !p)}>{isEditing ? 'Preview' : 'Edit'}</button>
       <Post post={data.markdownRemark} />
     </Layout>
   );
@@ -61,4 +64,4 @@ let postForm = {
   ],
 }
 
-export default remarkForm(PostTemplate, postForm);
+export default liveRemarkForm(PostTemplate);

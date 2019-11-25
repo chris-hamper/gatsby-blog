@@ -10,10 +10,11 @@ import styles from './Post.module.scss';
 import type { Node } from '../../types';
 
 type Props = {
-  post: Node
+  post: Node,
+  isEditing: Boolean,
 };
 
-const Post = ({ post }: Props) => {
+const Post = ({ post, isEditing }: Props) => {
   const { html } = post;
   const { tagSlugs, slug } = post.fields;
   const { tags, title, date } = post.frontmatter;
