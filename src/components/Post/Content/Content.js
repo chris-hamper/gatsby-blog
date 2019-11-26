@@ -3,7 +3,7 @@ import React from 'react';
 import styles from './Content.module.scss';
 import { Wysiwyg } from '@tinacms/fields';
 import { TinaField } from '@tinacms/form-builder';
-import { MyContentEditable } from '../../MyContentEditable';
+import { EditableContent } from '../../EditableContent';
 
 type Props = {
   body: string,
@@ -14,7 +14,7 @@ type Props = {
 const Content = ({ body, title, isEditing }: Props) => (
   <div className={styles['content']}>
     <h1 className={styles['content__title']}>
-      <TinaField name="rawFrontmatter.title" Component={MyContentEditable}>
+      <TinaField name="rawFrontmatter.title" Component={EditableContent}>
         {title}
       </TinaField>
     </h1>
